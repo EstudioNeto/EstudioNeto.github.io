@@ -4,86 +4,160 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Estúdio Neto - Aplicativos</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --primary: #2c3e50;
+            --accent: #01875f;
+            --bg: #f4f7f6;
+            --card-bg: #ffffff;
+            --text: #333333;
+            --text-light: #7f8c8d;
+        }
         body {
-            font-family: Arial, sans-serif;
-            background-color: #f7f9fa;
-            color: #333;
-            text-align: center;
-            padding: 40px 20px;
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
             margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        header {
+            background: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d);
+            padding: 60px 20px 80px 20px;
+            text-align: center;
+            color: white;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+            font-weight: 800;
+            letter-spacing: -1px;
+        }
+        header p {
+            margin: 10px 0 0;
+            font-size: 1.2rem;
+            opacity: 0.9;
         }
         .container {
-            max-width: 500px;
-            margin: 0 auto;
-            background: #ffffff;
-            padding: 40px 30px;
-            border-radius: 12px;
-            box-shadow: 0 8px 16px rgba(0,0,0,0.05);
+            flex: 1;
+            max-width: 800px;
+            margin: -50px auto 40px auto;
+            padding: 0 20px;
+            width: 100%;
+            box-sizing: border-box;
         }
-        h1 {
-            color: #2c3e50;
-            margin-bottom: 5px;
+        .app-card {
+            background: var(--card-bg);
+            border-radius: 20px;
+            padding: 30px;
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            margin-bottom: 25px;
         }
-        .subtitle {
-            color: #7f8c8d;
-            margin-bottom: 30px;
-            font-size: 14px;
+        .app-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.12);
         }
-        .app-box {
-            border: 1px solid #eaeaea;
-            padding: 25px;
-            border-radius: 10px;
-            background-color: #fafbfc;
+        .app-icon {
+            width: 120px;
+            height: 120px;
+            border-radius: 25%;
+            object-fit: cover;
+            background-color: #eee;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            flex-shrink: 0;
         }
-        .app-box h2 {
+        .app-info {
+            flex: 1;
+        }
+        .app-info h2 {
             margin: 0 0 10px 0;
-            color: #2980b9;
-            font-size: 24px;
+            color: var(--primary);
+            font-size: 1.8rem;
+            font-weight: 800;
         }
-        .app-box p {
-            font-size: 15px;
-            color: #555;
-            line-height: 1.5;
-            margin-bottom: 20px;
+        .app-info p {
+            margin: 0 0 20px 0;
+            color: var(--text-light);
+            line-height: 1.6;
+            font-size: 1.05rem;
         }
         .play-btn {
-            display: inline-block;
-            background-color: #01875f;
-            color: #ffffff;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background-color: var(--accent);
+            color: white;
             text-decoration: none;
-            padding: 12px 24px;
-            border-radius: 6px;
-            font-weight: bold;
-            font-size: 16px;
-            transition: background-color 0.2s;
+            padding: 12px 28px;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: background-color 0.2s, transform 0.2s;
         }
         .play-btn:hover {
             background-color: #016b4a;
+            transform: scale(1.02);
         }
-        .footer-text {
-            margin-top: 30px;
-            font-size: 13px;
-            color: #95a5a6;
+        .play-btn svg {
+            width: 20px;
+            height: 20px;
+            fill: currentColor;
+        }
+        footer {
+            text-align: center;
+            padding: 30px;
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+        @media (max-width: 600px) {
+            .app-card {
+                flex-direction: column;
+                text-align: center;
+                padding: 25px 20px;
+            }
+            .app-icon {
+                width: 100px;
+                height: 100px;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="container">
+
+    <header>
         <h1>Estúdio Neto</h1>
-        <p class="subtitle">Soluções musicais para todos</p>
+        <p>Soluções musicais para todos</p>
+    </header>
 
-        <div class="app-box">
-            <h2>Sinosom</h2>
-            <p>Transforma ciência acústica em soluções simples na palma da sua mão.</p>
+    <div class="container">
+        <!-- App: Sinosom -->
+        <div class="app-card">
+            <!-- A imagem 'sinosom.png' vai ser carregada aqui -->
+            <img src="sinosom.png" alt="Ícone do Sinosom" class="app-icon" onerror="this.src='https://via.placeholder.com/120?text=App'">
             
-            <!-- Cole aqui o link oficial do Sinosom na Play Store -->
-            <a href="https://play.google.com/store/apps/details?id=com.seuapp.sinosom" class="play-btn" target="_blank">Baixar no Google Play</a>
+            <div class="app-info">
+                <h2>Sinosom</h2>
+                <p>Transforma ciência acústica em soluções simples na palma da sua mão.</p>
+                <a href="https://play.google.com/store/apps/details?id=COLOQUE_SEU_ID_AQUI" class="play-btn" target="_blank">
+                    <svg viewBox="0 0 24 24"><path d="M5 2.059A3 3 0 0 0 2.06 4.965v14.07A3 3 0 0 0 5 21.941l15-9.882z"/></svg>
+                    Baixar no Google Play
+                </a>
+            </div>
         </div>
-
-        <div class="footer-text">
-            &copy; 2026 - Desenvolvido por Estúdio Neto
-        </div>
+        
     </div>
+
+    <footer>
+        &copy; 2026 - Desenvolvido por Estúdio Neto
+    </footer>
+
 </body>
 </html>
